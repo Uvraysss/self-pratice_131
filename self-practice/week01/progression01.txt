@@ -1,0 +1,271 @@
+Self-practice
+Week 01
+In class
+
+let x = [20,30, "Apple", true, false, "Banana"]
+console.log(x) 
+console.log(`length = ${x.length}`) 
+console.log(`first index = ${x[0]}`) 
+console.log(`last index = ${x[x.length-1]}`)
+
+for (let i = 0; i < x.length; i++) {
+    console.log(`Index = ${i}`,`Value = ${x[i]}`)
+} 
+
+คำอธิบาย
+console.log(x) : แสดงค่าใน Array x ทั้งหมด --> [20, 30, "Apple", true, false, "Banana"] 
+x.length : นับจำนวนค่าหรือแสดงความยาวใน Array x --> 6
+x[0] : แสดงค่าแรกของ Array x --> 20
+x[x.length-1] : แสดงค่าสุดท้ายของ Array x --> Banana
+for loop : เพื่อให้แสดงลำดับและค่าของ Array x ทีละตัว ซึ่งค่าที่ได้คือ 
+Index = 0 Value = 20
+Index = 1 Value = 30
+Index = 2 Value = Apple
+Index = 3 Value = true
+Index = 4 Value = false
+Index = 5 Value = Banana
+
+------------------------------------------------------------------------------------------------------
+
+x[x.length] = "YOU" 
+x[x.length+2] = "JS" 
+console.log(x) 
+
+คำอธิบาย
+x[x.length] = "YOU" : เพิ่ม "YOU" ลงใน Array x เป็นลำดับที่ 7 
+x[x.length+2] = "JS" : เพิ่ม "JS" ลงใน Array x เป็นลำดับที่ 9 
+console.log(x) : [20, 30, "Apple", true, false, "Banana", "YOU", <2 empty items>, "JS"] 
+
+------------------------------------------------------------------------------------------------------
+
+delete x[6] 
+console.log(x) 
+console.log(`length = ${x.length}`) 
+console.log(x.pop()) 
+console.log(`length = ${x.length}`) 
+
+คำอธิบาย
+delete x[6] : ลบค่าลำดับที่ 6 ของ Array x ออก 
+console.log(x) : [20, 30, "Apple", true, false, "Banana", <3 empty items>, "JS"] 
+x.length : นับจำนวนค่าหรือแสดงความยาวใน Array x --> 9
+x.pop() : ลบค่าตัวสุดท้ายของ Array
+x.length นับจำนวนค่าหรือแสดงความยาวใน Array x --> 8
+
+-----------------------------------------------------------------------------------------------------
+
+let y = [ ["YOU", "FOFO", "ABC"], {NO: "67130500131", Firstname: "Thunwawee", Nickname: "YOU"}]
+console.log(y) 
+
+//array contains many objects
+const colors=[{id:1, name:'red', tone:'hot'},{id:2, name:'purple', tone:'cool'},{id:3, name:'white', tone:'neutral'}]
+console.log(colors) 
+ 
+const contacts=[{email:['abc@gmail.com','foo@kmutt.ac.th']},
+{address:['Bangkok', 'Puket']}]
+ 
+//array contains many arrays
+const groups=[['Malee', 'Jane'], ['John', 'Jay', 'Pete']]
+console.log(groups)
+ 
+คำอธิบาย
+console.log(y) : [[ 'YOU', 'FOFO', 'ABC' ], { NO: '67130500131', Firstname: 'Thunwawee', Nickname: 'YOU' }]
+console.log(colors) : [{id:1, name:'red', tone:'hot'}, {id:2, name:'purple', tone:'cool'}, {id:3, name:'white', tone:'neutral'}]
+console.log(contacts) : [{email:['abc@gmail.com', 'foo@kmutt.ac.th']}, {address:['Bangkok', 'Puket']}]
+console.log(groups) : [['Malee', 'Jane'], ['John', 'Jay', 'Pete']]
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+console.log(colors[1])
+console.log(contacts[0].email[1])
+
+for (let i = 0; i < groups.length; i++) {
+    let group = groups[i]
+    console.log(group[group.length-1])
+}
+
+คำอธิบาย
+colors[1] : แสดงลำดับที่ 1 ของ Array colors --> {id: 2, name: 'purple', tone: 'cool'}
+contacts[0].email[1] : แสดง email ลำดับที่ 1 ของ Array contacts 0 --> foo@kmutt.ac.th
+for loop : วนลูป groups เพื่อแสดงค่าตัวสุดท้ายของแต่ละ group --> [ 'Jane', 'Pete']
+
+------------------------------------------------------------------------------------------------------
+
+/* spread */
+const greeting = "hello Word"
+const greetingCh = [...greeting] 
+console.log(greetingCh) /*แปลง string เป็น Arrays*/
+
+const cloneGreeting = ["check", ...greetingCh, "done"]
+console.log(cloneGreeting)
+
+คำอธิบาย
+console.log(greetingCh) :  ใช้ spread operator เพื่อแปลง string เป็น array ของตัวอักษร --> ['h','e','l','l','o',' ','W','o','r','d']
+console.log(cloneGreeting) : ["check", ['h','e','l','l','o',' ','W','o','r','d'], "done"]
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+let a = new Array ()
+console.log(a)
+console.log(a.length)
+
+let b = new Array(10)
+console.log(b)
+console.log(b.length)
+
+let c = new Array (3, 2, 1, "New")
+console.log(c)
+console.log(c.length)
+
+คำอธิบาย
+new Array () : สร้าง Array เปล่า
+console.log(a) : []
+console.log(a.length) : 0
+new Array (10) : สร้าง Array ความยาว 10 (แต่ยังไม่มีค่า)	
+console.log(b) : [ <10 empty items> ]
+console.log(b.length) : 10
+new Array (3, 2, 1, “New”) : สร้าง array ด้วยค่าที่กำหนด 
+console.log(c) : [3, 2, 1, “New”]
+console.log(c.length) : 4
+
+----------------------------------------------------------------------------------------------------
+
+const arr4 = Array.of(5)
+console.log(arr4)
+console.log(arr4.length)
+
+const str = "Hello"
+let k = Array.from(str)
+console.log(k)
+console.log(k.length)
+
+const arr6 = Array.from(greeting)
+console.log(arr6)
+console.log(arr6.length)
+
+คำอธิบาย
+const arr4 = Array.of(5) : สร้าง array ที่มี element เป็นเลข 5
+console.log(arr4) : [5]
+console.log(arr4.length) : 1 
+let k = Array.from(str) : สร้าง array จาก string
+console.log(k) : ['H','e','l','l','o']
+console.log(k.length) : 5
+const arr6 = Array.from(greeting)
+console.log(arr6) : ['h','e','l','l','o',' ','W','o','r','d']
+console.log(arr6.length) : 11
+
+------------------------------------------------------------------------------------------------------
+
+// practice
+/*
+Exercise 1
+Declare a variable fruits as an array with the values ["Apple", "Banana", "Cherry"].
+- Add "Mango" to the end of the array.
+- Display the entire array.
+- Display the first and last element.
+*/
+
+let fruits = ["Apple", "Banana", "Cherry"]
+fruits[fruits.length] = "Mango"
+console.log(fruits)
+console.log(fruits[0])
+console.log(fruits[fruits.length-1])
+
+คำอธิบาย
+ให้ fruits เป็น Array ที่มีค่า ["Apple", "Banana", "Cherry"] และ โจทย์บอกให้เพิ่ม Mango เข้าไปที่ตำแหน่งท้ายสุด 
+จึงใช้ fruits[fruits.length] = "Mango" ต่อมาโจทย์บอกให้แสดงค่า Array fruits ทั้งหมด จึง console.log(fruits) 
+จะได้เป็น ["Apple", "Banana", "Cherry", "Mango"] และโจทย์บอกให้แสดงค่าแรก และ ค่าสุดท้ายของ Array 
+จึงเขียน console.log(fruits[0]) และ console.log(fruits[fruits.length-1]) ได้ผลเป็น Apple และ Mango ตามลำดับ
+
+--------------------------------------------------------------------------------------------------------
+
+/*
+Exercise 2
+Declare an array scores = [10, 20, 30, 40, 50].
+- Remove the first element from the array.
+- Remove the last element from the array.
+- Display the remaining array.
+*/
+
+let scores = [10, 20, 30, 40, 50]
+scores.shift()
+scores.pop()
+console.log(scores)
+
+คำอธิบาย
+ให้ scores เป็น Array ที่มีค่า [10, 20, 30, 40, 50] ซึ่งโจทย์บอกให้เอาค่าแรกของ Array และค่าสุดท้าย 
+ของ Array ออก ซึ่งคือ 10 และ 50 ตามลำดับ จึงใช้คำสั่ง scores.shift() เพื่อนำค่าแรกของ Array ออก 
+และใช้คำสั่ง scores.pop() เพื่อนำค่าสุดท้ายของ Array ออก เมื่อ console.log(scores) ออกมาแล้วจะได้ผลเป็น 
+[20, 30, 40]
+
+--------------------------------------------------------------------------------------------------------
+
+/*
+Exercise 3
+Declare an array color = ["red", "green", "blue"].
+- Add "yellow" at the beginning of the array.
+- Add "purple" at the end of the array.
+- Display the array and its length.
+*/
+
+let color = ["red", "green", "blue"]
+color.unshift("yellow")
+color[color.length] = "purple"
+console.log(color)
+console.log(color.length)
+
+คำอธิบาย
+ให้ color เป็น Array ที่มีค่า ["red", "green", "blue"] โดยโจทย์บอกให้เพิ่มค่า “yellow” เป็นค่าแรกใน Array 
+แทน จึงใช้คำสั่ง color.unshift(“yellow”) และสั่งให้เพิ่มค่า “purple” ในตำแหน่งท้ายสุดของ Array จึงใช้คำสั่ง 
+color[color.length] = "purple" พอ console.log(color) ออกมาจะได้ผลว่า 
+[ 'yellow', 'red', 'green', 'blue', 'purple' ] ซึ่งมีความยาวเท่ากับ console.log(color.length) --> 5
+
+-----------------------------------------------------------------------------------------------------
+
+/*
+Exercise 4
+Declare an array names = ["A", "B", "C"].
+- Use a for loop to display the index and value of each element.
+*/
+
+let names = ["A", "B", "C"]
+
+for (let i = 0; i < names.length; i++) {
+      console.log(`Index = ${i}`,`Value = ${names[i]}`)
+}
+
+คำอธิบาย
+ให้ names เป็น Array ที่มีค่าเท่ากับ ["A", "B", "C"] จากโจทย์สั่งให้ใช้ for loop เพื่อแสดง index 
+และค่าของแต่ละ element จึงใช้คำสั่ง 
+for (let i = 0; i < names.length; i++) {
+      console.log(`Index = ${i}`,`Value = ${names[i]}`)
+}
+เมื่อรัน code แล้วจะได้ผลลัพธ์เป็น :
+Index = 0 Value = A
+Index = 1 Value = B
+Index = 2 Value = C
+
+----------------------------------------------------------------------------------------------------
+
+/*
+Exercise 5
+Declare a string "Hello World" in the variable text.
+- Convert it to an array of characters using Array.from().
+- Display the array and its length.
+- Display the character at index 4.
+*/
+
+let v = "Hello World"
+let s = Array.from(v)
+console.log(s)
+console.log(s.length)
+console.log(s[4])
+
+คำอธิบาย
+ให้ v เป็น String ที่มีค่าเท่ากับ “Hello World” จากโจทย์ต้องการให้แปลง String เป็น Array ซึ่งใช้คำสั่ง 
+let s = Array.from(v) เมื่อ console.log(s) ออกมาจะได้ผลลัพธ์เป็น 
+[ 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd' ]  และหาความยาวของ Array s โดยใช้คำสั่ง 
+console.log(s.length) ซึ่งมีค่าเท่ากับ 11 และโจทย์อยากรู้ว่า ลำดับที่ 4 ของ Array คืออะไร ใช้คำสั่ง 
+console.log(s[4]) สุดท้ายได้ผลลัพธ์เท่ากับ o
+
+----------------------------------------------------------------------------------------------------
+น.ส.ธันวาวีร์  นิธิพรชัยวงศ์ 67130500131
