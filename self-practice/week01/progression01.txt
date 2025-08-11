@@ -2,7 +2,7 @@ Self-practice
 Week 01
 In class
 
-let x = [20,30, "Apple", true, false, "Banana"]
+let x = [20, 30, "Apple", true, false, "Banana"]
 console.log(x) 
 console.log(`length = ${x.length}`) 
 console.log(`first index = ${x[0]}`) 
