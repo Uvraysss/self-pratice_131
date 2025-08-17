@@ -1,0 +1,24 @@
+
+สรุปเนื้อหาที่ได้เรียนรู้ในสัปดาห์ที่ 2 
+
+    object คือ ชุดข้อมูลที่เก็บค่าในรูปแบบของ key-value ซึ่ง key คือ proprety และ value คือค่าของ property นั้น ๆ ซึ่ง
+เราสามารถสร้าง object ได้หลายรูปแบบ สร้าง Array ใน object หรือจะสร้าง object ซ้อน object ก็ทำได้ ยกตัวอย่างเช่น 
+const book = { isbn:12345678, title:'Introduction to JS', authors:[{firstname:'John'}, {lastname:'Smith'},
+{firstname:'Danial'}, {lastname:'Doh'}, {firstname:'YOU'}, {lastname:'Nithi'}], versions:[1.0, 2.0,3.0], 
+isAvailable:true, getISBN(){return this.isbn},isbn:67130500131 } ในตัวอย่างนี้ มี key ที่ซ้ำกันคือ isbn เมื่อมี key ซ้ำ
+กัน โปรแกรมจะเลือกแสดงค่าล่าสุด คือ isbn:67130500131 แทน เราสามารถเข้าถึง key หรือ value โดยใช้ obj.key หรือ 
+object.values ได้ และเรายังสามารถ เพิ่ม key ใหม่ หรือลบ key เก่าได้ตลอดเวลา การสร้าง constructor function เป็นวิธีสร้าง 
+object แบบ reusable มีข้อสังเกตคือชื่อของ function จะเป็นตัวพิมพ์ใหญ่ และจะมีการใช้ this. ใน function เพื่อกำหนด property 
+และ method มีการสร้าง instance ด้วย new เช่น new Movie(...) เป็นการสร้าง object ใหม่ ที่มี reference มาจาก Movie
+Method ภายใน constructor สามารถเข้าถึง property ของ object ได้ผ่าน this ต่อมาเป็นการสร้าง object แบบใช้ ES6 Class
+ซึ่ง Class เป็น syntax modern ของ constructor function สามารถกำหนด constructor และ method ใน class ได้ ซึ่งวิธีนี้มี
+ประโยชน์สำหรับการสร้าง object แบบที่ใช้ซ้ำหลายครั้ง เรื่องของ Object create ใช้สร้าง object ใหม่โดยกำหนด prototype
+Object ใหม่สามารถเพิ่ม property ของตัวเองได้ ถ้า key ไม่มีใน object ใหม่ จะไปใช้เรียกใช้ key จาก prototype สามารถเข้าถึง 
+nested object ผ่าน prototype ได้ ต่อมาการใช้ Destructuring คือ ใช้เพื่อแยกค่าออกจาก Array หรือ object โดยใช้งานได้ดังนี้
+สำหรับ array: [first, second] = arr และสำหรับ object: {key1, key2} = obj Nested destructuring ใช้ดึงค่าจาก object 
+หรือ array ซ้อนกันได้ สามารถ เปลี่ยนชื่อ key เมื่อ destructuring ได้ เช่น {isbn: bookISBN} key ที่ชื่อ isbn จะเปลี่ยนชื่อไปเป็น
+bookISBN แทน สุดท้ายเป็นเรื่องของ Object Comparison การเปรียบเทียบ object ด้วย == หรือ === จะ เปรียบเทียบ reference ไม่ใช่ค่า
+ของ Object ถึงมีค่าเหมือนกัน เมื่อเปรีบเทียบความเท่ากันก็อาจจะได้ผลลัพธ์เท่ากับ false เนื่องจาก ไม่ใช่ Object ตัวเดียวกัน
+อยู่กันคนละ Memory Address
+
+-----------------------------------------------------------------------------------------------------------------
