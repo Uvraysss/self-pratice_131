@@ -118,6 +118,31 @@ console.log(title)
 const {authors:{Firstname}} = book3
 console.log(Firstname)
 
+let q1 = {
+    isbn: 123456789,
+    title: "JavaScript"
+}
+
+let q2 = {
+    isbn: 123456789,
+    title: "JavaScript"
+}
+
+function shallowEquality(q1,q2) {
+    const keys1 = Object.keys(q1)
+    const keys2 = Object.keys(q2)
+
+    if (keys1.length !== keys2.length) {
+        return false
+    }
+    for (let key of keys1) {
+        if (q1[key] !== q2[key]) {
+            return false
+        }
+    }
+    return true
+}
+
 /*
 1. Nested Object & Array
 - Create an object employee

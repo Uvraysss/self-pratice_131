@@ -236,6 +236,38 @@ console.log(Firstname)
 
 -------------------------------------------------------------------------------------------------------------------------
 
+let q1 = {
+    isbn: 123456789,
+    title: "JavaScript"
+}
+
+let q2 = {
+    isbn: 123456789,
+    title: "JavaScript"
+}
+
+function shallowEquality(q1,q2) {
+    const keys1 = Object.keys(q1)
+    const keys2 = Object.keys(q2)
+
+    if (keys1.length !== keys2.length) {
+        return false
+    }
+    for (let key of keys1) {
+        if (q1[key] !== q2[key]) {
+            return false
+        }
+    }
+    return true
+}
+
+คำอธิบาย เป็น function สำหรับตรวจสอบว่า object 2 ตัว มี key-value เท่ากันหรือไม่ ซึ่งใน function เขียน const keys1 = Object.keys(q1) และ
+const keys2 = Object.keys(q2) หมายถึง Array ที่เก็บ keys ของ Object q1 และ q2 ไว้ ซึ่งได้เขียน if else ออกมาเพื่อ check ความเท่ากันดังนี้
+keys1.length !== keys2.length หมายถึง ตรวจสอบจำนวน keys ของทั้ง 2 object ว่าเท่ากันหรือไม่ ถ้าไม่เท่ากันให้ return เป็น false
+แต่ถ้าจำนวน keys เท่ากัน ก็จะมา check ใน for loop ต่อ if (q1[key] !== q2[key]) { return false } หมายถึง การตรวจสอบ values ของ keys ใน
+object ว่าเท่ากันหรือไม่ ถ้าไม่เท่ากันให้ return false แต่ถ้าเท่ากันให้ return true เช่นในตัวอย่างเป็น 
+[ isbn: 123456789, title: "JavaScript" ] เท่ากัน จึงได้ผลลัพธ์ออกมาเป็นค่า true
+
 // practice
 
 /*
