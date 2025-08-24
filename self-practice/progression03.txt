@@ -1,0 +1,22 @@
+
+สรุปเนื้อหาที่ได้เรียนรู้ในสัปดาห์ที่ 2 
+
+    เริ่มต้นด้วยการประกาศ function แบบธรรมดา ยกตัวอย่างเช่น function multiply1(a, b) { return a * b; } 
+สามารถเรียกใช้งานได้ทั้งก่อนและหลังการประกาศ ต่อมาเป็น function รูปแบบของ function expression เป็นการเก็บ
+function ไว้ในตัวแปร รูปแบบนี้ไม่สามารถเรียกใช้งานได้ก่อนการประกาศ ตัวอย่างการเขียน function ประเภทนี้ เช่น 
+const multiply2 = function(a, b) { return a * b; }; และยังมี Arrow function เป็น function expression
+อีกรูปแบบหนึ่ง ทำให้การเขียน function มีความกระชับมากขึ้น เหมาะกับ function ที่สั้นและไม่ต้องการใช้ this ยกตัวอย่าง
+การเขียน function ในรูปแบบนี้ เช่น const multiply3 = (a, b) => a * b; ต่อมาได้เรียนเกี่ยวกับ Function ที่เป็น 
+First-class Citizen เป็น function ที่สามารถเก็บในตัวแปรได้ ส่งเป็นอาร์กิวเมนต์ได้ หรือ return ค่ากลับมาได้ และใช้เรียก 
+function อื่นได้ ยกตัวอย่างการเขียน function ประเภทนี้เช่น function doSomething(fn) { return fn(2, 3); } 
+เป็นการรับพารามิเตอร์มาเป็น function และดำเนินการตาม function นั้น ๆ ต่อมาเป็นเรื่องของการเรียกคืน function
+function หนึ่งสามารถ return อีก function ออกมาได้ ใช้ประโยชน์ในการสร้าง function เฉพาะทาง (higher-order function)
+ในคาบนี้ได้ยกตัวอย่างเป็น :
+function sayGoodbye() { return "Good bye"; } 
+function doSomeThing() { return sayGoodbye; }
+จพเห็นได้ว่า function doSomeThing ไปเรียกใช้ function sayGoodbye และได้ค่า "Good bye" ออกมาเป็นผลลัพธ์ ต่อมาได้เรีรยน
+เรื่องของ Arguments Object และ Rest Parameters โดย arguments เป็น object-like ที่เก็บ argument ทั้งหมด ใช้กับจำนวน 
+parameter ที่ไม่แน่นอนได้ แต่ arguments จะไม่สนใจ rest parameter (...z) สุดท้ายเรื่องของ Pass by Reference (Object)
+ถ้าส่ง object เข้าไปในฟังก์ชัน ค่าข้างใน object จะถูกเปลี่ยนจริง ๆ เพราะส่งเป็น reference
+
+-------------------------------------------------------------------------------------------------------------
