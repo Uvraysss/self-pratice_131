@@ -1,0 +1,367 @@
+Self-practice
+Week 03
+In class
+
+//1. function declaration
+function F1(x, y) {
+    return x * y
+}
+
+function mutiply1(a, b){
+    return a * b
+}
+console.log(mutiply1(2,3))
+
+คำอธิบาย function F1 และ function mutiply1 เป็นตัวอย่างของการเขียน function ธรรมดา ซึ่งมีการรับพารามิเตอร์เข้ามา 
+และดำเนินการตามคำสั่งที่เราต้องการเพื่อ return ค่าได้อย่างถูกต้องซึ่งในตัวอย่างนี้ return ค่าได้เท่ากับ 6 
+
+//2. function expression (using arrow function systax) ไม่ support การเรียก references
+const mutiply2 = (a, b) => a * b //(a, b) => return a * b
+console.log(mutiply2(4,2)) 
+
+คำอธิบาย mutiply2 เป็นตัวอย่างของการประกาศด้วย function expression (รูปแบบการนิยามฟังก์ชันที่เก็บลงในตัวแปร) โดยใช้ 
+arrow function syntax ซึ่งจะมีความกระชับ กว่าการประกาศ function ธรรมดา const mutiply2 = (a, b) => a * b 
+หมายถึง การสร้างตัวแปรคงที่ชื่อ mutiply2 แล้วกำหนดค่าให้เป็น function ที่รับพารามิเตอร์ 2 ตัวคือ a และ b ภายใน function 
+จะคืนค่าผลคูณของ a * b ไม่ต้องใส่ return หรือ { } เพราะมีแค่บรรทัดเดียว ซึ่งจากในตัวอย่างนี้จะได้ค่าเท่ากับ 8
+
+//3. function expression (using function declaration)
+const mutiply3 = function(a, b) {return a * b}
+console.log(mutiply3(5,2))
+
+คำอธิบาย mutiply3 เป็นตัวอย่างของการประกาศด้วย function expression อีกรูปแบบหนึ่ง คือประกาศตัวแปร mutiply3 แบบ const 
+มีการรับพารามิเตอร์ a และ b จากนั้นดำเนินการ คืนค่าผลคูณ a * b ซึ่งจากในตัวอย่างนี้จะได้ค่าเท่ากับ 10
+
+console.log(typeof(mutiply1))
+console.log(typeof(mutiply2))
+console.log(typeof(mutiply3))
+
+คำอธิบาย เป็นการเช็ค type ของ function mutiply1, mutiply2 และ mutiply3 ซึ่งได้ผลลัพธ์ออกมาเป็น function เพราะทั้ง
+สามเป็น function ทั้งหมด
+
+const x = mutiply1
+const y = mutiply2
+const z = mutiply3
+console.log(typeof(x))
+console.log(typeof(y))
+console.log(typeof(z))
+console.log(x(2,3))
+console.log(y(3,3))
+console.log(z(4,3))
+
+คำอธิบาย ตัวอย่างนี้เป็นตัวอย่างของการเรียกใช้ function จากตัวแปรใหม่ ให้ x = mutiply1, y = mutiply2 และ z = mutiply3
+ซึ่งเมื่อเช็ค type ของ x, y, z แล้วจะได้เหมือนตอนเช็ค type ของ mutiply1, mutiply2, mutiply3 ก็คือเป็น function ทั้งหมด
+ต่อมาเป็นตัวอย่างของการเรียกใช้งานจากตัวแปรใหม่ได้โดยไม่ error คือ เมื่อ console.log(x(2,3)) จะได้ค่าเท่ากับ 6 ( เรียกใช้งาน 
+function mutiply1 ) ต่อมา console.log(y(3,3)) จะได้ค่าเท่ากับ 9 ( เรียกใช้งาน function mutiply2 ) สุดท้าย console.log(z(4,3))
+จะได้ค่าเท่ากับ 12 ( เรียกใช้งาน mutiply3 )
+
+let a = 1
+let b = a
+console.log(typeof(a))
+console.log(typeof(b))
+
+คำอธิบาย ตัวอย่างนี้เป็นการเช็ค typeof ธรรมดา เมื่อ console.log(typeof(a)) จะได้ค่าเท่ากับ number และเนื่องจาก let b = a
+เมื่อ console.log(typeof(b)) ก็จะได้ type เป็น number เช่นกัน
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+if (x === mutiply1) 
+    console.log("x equals to mutiply1")
+else 
+    console.log("x is not equals to mutiply1")
+
+คำอธิบาย เป็นการเช็คความเท่ากันของ function คือเขียน if else ขึ้นมาเพื่อตรวจสอบว่า function x และ function multiply1
+เท่ากันหรือไม่ ถ้า x === mutiply1 ให้ return x equals to mutiply1 แต่ถ้าไม่เท่ากัน ให้ return x is not equals to mutiply1
+ซึ่งเมื่อรัน code นี้จะได้ค่า x equals to mutiply1 เนื่องจาก code ก่อนหน้ามีการกำหนด const x = mutiply1
+
+function doSomething(x){
+    return x(3,5) //multiply1(3,5)
+}
+console.log(doSomething(mutiply1)) //pass function to another function 
+
+คำอธิบาย ตัวอย่างนี้เป็นการส่ง function เป็นอาร์กิวเมนต์และให้ function เรียก function จากตัวอย่างคือ function doSomething รับ 
+function เข้ามาในพารามิเตอร์ x แล้วเรียกมันด้วยอาร์กิวเมนต์ (3,5) console.log(doSomething(mutiply1)) เป็นการส่ง function multiply1 
+เข้าไป และดำเนินการ 3 * 5 ได้ผลลัพธ์ออกมาเท่ากับ 15 
+
+function Dosomething(x){
+    return(x)
+}
+console.log(Dosomething(mutiply1))
+const c = Dosomething(mutiply1)
+console.log(c)
+console.log(y(2,4))
+
+คำอธิบาย เป็นตัวอย่างของการเรียกคืน function (ส่งต่อ reference) จากในตัวอย่างนี้ function Dosomething แค่ คืนค่าของพารามิเตอร์ x กลับไปเฉย ๆ
+console.log(Dosomething(mutiply1)) จะพิมพ์ตัว function ออกมาได้เป็น [Function: mutiply1] และต่อมา กำหนด 
+c = Dosomething(mutiply1) --> ตอนนี้ c จะชี้ไปที่ function เดียวกับ mutiply1 console.log(c) จึงได้เป็น [Function: mutiply1] อีกครั้ง
+
+function sayGoodbye(){
+    return "Good bye"
+}
+function doSomeThing() {
+    return sayGoodbye
+} 
+let doIt = doSomeThing()
+console.log(doIt())
+console.log(doSomeThing()())
+
+คำอธิบาย ตัวอย่างนี้เป็นตัวอย่างของ Higher-order function หรือเป็น function ที่เรียก จากตัวอย่างคือ function sayGoodbye มีค่า string "Good bye"
+doSomeThing ไม่เรียก sayGoodbye แต่คืนตัว function sayGoodbye ออกมา หรือเรียกให้ดำเนินการ function sayGoodbye ต่อมากำหนด let doIt = doSomeThing() 
+ซึ่งตอนนี้ doIt คือ ฟังก์ชัน sayGoodbye เมื่อ console.log(doIt()) ขึ้นมาจะเรียก sayGoodbye() ได้ "Good bye" และเมื่อ console.log(doSomeThing()()) 
+จะได้รอบแรก doSomeThing() เป็นการคืนฟังก์ชัน sayGoodbye จากนั้น () ตัวที่สองเรียก sayGoodbye() ได้ "Good bye"
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+function myFunc(theObject){
+    theObject.model = "A9999"
+}
+const product = {model : "A1001", price : 199}
+console.log(product.model)
+
+myFunc(product);
+console.log(product.model)
+
+คำอธิบาย ตัวอย่างนี้เป็นตัวอย่างของการส่ง Object เข้าไปใน function ในตัวอย่างมีการสร้าง Object product มีค่า {model : "A1001", price : 199} เมื่อแสดง 
+product.model จึงได้ค่าเท่ากับ "A1001" แต่เมื่อเรียก myFunc(product) ใน myFunc มีโค้ด theObject.model = "A9999" เนื่องจากอ็อบเจ็กต์ใน JavaScript ถูกส่งมอบ 
+โดย reference product ถูกแก้ไขจริง จึงแสดงค่า product.model อีกครั้ง ได้เป็น "A9999" แทน
+
+// Arguments
+function sum(x, y, ...z){
+    // return x + y
+    // return arguments[0] + arguments[1]
+    for (argu of arguments){
+        console.log(argu)
+    }
+    console.log(arguments.length) // Arguments ไม่สนใจ spread
+}
+(sum(1, 2, 3, 4, 5, 6, 7, 8))
+
+คำอธิบาย code นี้เป็นตัวอย่างของการใช้ Arguments จากในตัวอย่างมีการประกาศ function sum ที่รับพารามิเตอร์ (x, y, ...z) x = 1, y = 2 และ z = [3,4,5,6,7,8]
+(เก็บเป็น array เพราะใช้ rest operator ...) แต่ arguments เป็น object-like พิเศษที่มีทุก argument ที่ส่งเข้ามาจริง ๆ ไม่สนว่าเราจะใช้ rest ไหม 
+ในที่นี้เมื่อเช็คความยาวจึงมีเท่ากับ 8 จากนั้นลองเขียน for loop ดู (argu of arguments) โปรแกรมจะพิมพ์ทีละค่าได้เป็น 1 2 3 4 5 6 7 8
+
+function sum(x,y,...z) {
+    let count = 0
+    for(argu of arguments) {
+        count += argu
+    }
+    console.log(`sum: ${count}`);
+}
+sum(1,2,3,4,5)
+
+คำอธิบาย เป็นการเขียน function sum ใหม่ ให้รวมทุกค่า arguments เมื่อเรียก sum(1,2,3,4,5) จะได้ arguments = [1,2,3,4,5] เขียน for loop เพื่อบวก 
+argument ทีละตัว เมือ console.log(`sum: ${count}`); และให้ sum(1,2,3,4,5) จะได้ 1+2+3+4+5 = 15
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+function getFreqOfWords(sentence){
+    if (sentence == null || sentence == undefined )
+        return undefined
+    
+    sentence = sentence.toLowerCase()
+    
+    let Words = sentence.split(" ")
+
+    let x = {}
+
+    for (let i of Words){
+        if ( i in x) {
+            x[i]++
+        } else {
+            x[i] = 1
+        }
+    } return x;
+}
+
+console.log(getFreqOfWords('Today is present and present is your gift'))
+
+คำอธิบาย เป็น function ที่ตรวจสอบและนับคำซ้ำในประโยค เช่นในตัวอย่างสั่ง console.log(getFreqOfWords('Today is present and present is your gift'))
+จะต้องได้ output คือ { today: 1, is: 2, present: 2, and: 1, your: 1, gift: 1 } เริ่มจากสร้าง function getFreqOfWords และให้รับพารามิเตอร์ชื่อ sentence
+เข้ามา หรือเป็นการรับประโยคที่ต้องการจะตรวจสอบเข้ามา จากนั้นเช็คก่อนว่า sentence เป็น null หรือ undefined ไหม โดยการเขียน if (sentence == null || sentence == undefined )
+return undefined ต่อมา ทำให้ข้อความทั้งหมดเป็นตัวพิมพ์เล็ก จึงใช้คำสั่ง sentence = sentence.toLowerCase() และทำการแยกคำในข้อความโดยใช้ let Words = sentence.split(" ")
+ต่อมาให้สร้าง object x ขึ้นมาเพื่อเก็บผลลัพธ์ และเขียน for loop เพื่อตรวจสอบค่าใน Words ทีละค่า  if ( i in x) หมายถึงถ้าคำนั้นมีอยู่แล้วใน object ให้เพิ่มค่า +1 
+แต่ถ้าไม่มี x[i] = 1 หมายถึงให้ค่า default เป็น 1 สุดท้ายให้คืนค่า object x ออกมาเป็นคำตอบ โดยมี key = คำ, value = จำนวนครั้งที่คำนั้นโผล่
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// practice
+/*Function Expression + Find Shortest Word
+- Write a function using function expression (with const + function) named findShortestWord(sentence)
+- Returns the shortest word in the sentence
+- If there are ties in length, return the last word found
+Example: "I love JavaScript" → "I"*/
+
+const findShortestWord = function(sentence) {
+    if (sentence == null || sentence == undefined)
+        return undefined
+
+    let Word = sentence.split(" ")
+    let shortest = Word[0];
+
+    for ( let i = 1; i < Word.length; i++ )
+        if ( Word[i].length < shortest.length ) {
+            shortest = Word[i]; 
+}
+    return shortest;
+}
+
+console.log(findShortestWord("I love JavaScript"))
+
+คำอธิบาย จากโจทย์บอกสั่งให้เขียน function แบบ function expression ชื่อว่า findShortestWord ซึ่งให้ return คำที่สั้นที่สุเในประโยค จึงเขียน function เป็น
+const findShortestWord = function(sentence) เป็นรูปแบบของ function expression และรับพารามอเตอร์เข้ามาเป็น sentence ต่อมาเช็ค sentence ก่อนว่า
+เท่ากับ null หรือ undefined ไหม และ กำหนด Word ขึ้นมา โดยที่ Word คือ sentence ที่ถูกแยกคำแล้ว ต่อมาให้ shortest หรือคำที่สั้นที่สุด โดยตั้ง default 
+คือ Word แรกก่อน จากนั้นเขียน for loop เพื่อเช็ค Word ทุกตัว ถ้า Word ตัวไหน มีความยาวน้อยวกว่า shortest หรือคำที่สั้นที่สุด ให้ Word ตัวนั้นเป็น shortest แทน
+โดยเขียนโค้ดออกมาได้เป็นดังนี้ if ( Word[i].length < shortest.length ) { shortest = Word[i]; } สุดท้าย return ค่า shortest จะได้คำตอบ ในที่นี้ลอง
+console.log(findShortestWord("I love JavaScript")) ได้ผลลัพธ์เป็น "I"
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+/*Arrow Function + Count Consonants
+- Write a function using arrow function named countConsonants(text)
+- Counts the number of consonants (all letters except a, e, i, o, u)
+- Case insensitive
+Example: "Hello World" → 7*/
+
+const countConsonants = (text) => {
+    if (!text) return null
+
+    text = text.toLowerCase()
+
+    const consonants = "bcdfghjklmnpqrstvwxyz";
+    let count = 0
+
+    for ( let i of text ) {
+        if (consonants.includes(i)) {
+            count++
+        }
+    } return count
+}
+
+console.log(countConsonants("Hello World"))
+
+คำอธิบาย โจทย์ข้อนี้ให้เขียน Arrow function ชื่อว่า countConsonants เป็น function สำหรับนับตัวอักษรที่ไม่ใช่สระ (a, e, i, o, u) ใน word เริ่มต้นจึงเขียน function
+ออกมาเป็น const countConsonants = (text) =>  ตามรูปแบบของ Arrow function ซึ่งรับพารามิเตอร์เป็น text เข้ามา และทำการตรวจสอบ text ว่ามี text จริงไหม
+ถ้าไม่มีให้ return null ต่อมาทำให้ text เป็นตัวอักษรพิมพืเล็กโดยใช้คำสั่ง text.toLowerCase() จากนั้นกำหนด consonants = "bcdfghjklmnpqrstvwxyz" กำหนด count 
+เริ่มต้น = 0 เพื่อไว้สำหรับการนับค่า เขียน for loop ขึ้นมา เพื่อเช็คทีละตัวอักษรของ text ซึ่ง if (consonants.includes(i)) หมายถึงกการตรวจสอบว่า i มีตัวอักษร  
+"bcdfghjklmnpqrstvwxyz" อยู่ไหม ถ้ามีก็ให้นับ count เพิ่ม สุดท้ายให้ return ค่า count ในที่นี้ได้ console.log(countConsonants("Hello World")) ออกมา 
+ผลลัพธ์ได้เท่ากับ 7 
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+/*Function as Argument + Reverse Words
+- Write a function executeFunc(fn, str) that:
+- Accepts a function fn and a string str
+- Calls fn(str) and returns the result
+Example: if fn = reverseWords → returns the sentence with each word reversed: "Hello World" → "olleH dlroW"*/
+
+const reverseWords = function(sentence) {
+    if ( sentence == null || sentence == undefined )
+        return undefined
+
+    return sentence.split(" ")
+                    .map(words => words.split("").reverse().join(""))
+                    .join()
+}
+
+const  executeFunc = (fn, str) => { return fn(str) }
+
+console.log(executeFunc(reverseWords, "Hello World"))
+console.log(executeFunc(reverseWords, "JavaScript is fun"))
+
+คำอธิบาย จากโจทย์สั่งให้สร้าง function executeFunc ซึ่งเป็น function ที่รับพารามิเตอร์มาเป็น function และ string หมายถึง function executeFunc มีการเรียก
+ใช้งาน function อื่น โดย function ที่ถูกเรียกใช้งานคือ function reverseWords ซึ่งเป็น function ที่ใช้ reverse คำ โดยเขียน function reverseWords ในรูปแบบ
+function expression เป็น const reverseWords = function(sentence) ให้รับพารามิเตอร์เป็น sentence เข้ามา จากนั้นเช็คว่า sentence เป็น null หรือ undefined 
+ไหม ถ้าไม่ให้ดำเนินการต่อ ให้ return sentence.split(" ") คือการแยกคำในประโยคออกจากกัน จากนั้น map words => words.split("") คือแยกตัวอักษรภายใน word
+.reverse() ทำการสลับ .join("") และนำตัวอักษรแต่ละตัวมาประกอบเข้าด้วย สุดท้าย .join() อีกรอบเพื่อให้ word เข้ามาต่อกันเป็นประโยคอีกครั้ง ต่อมาได้สร่าง function
+executeFunc = (fn, str) => { return fn(str) } เพื่อเรียกใช้ function reverseWords โดยเมื่อ console.log(executeFunc(reverseWords, "Hello World"))
+console.log(executeFunc(reverseWords, "JavaScript is fun")) จะได้ผลลัพธ์เป็น "olleH dlroW" และ "tpircSavaJ si nuf" ตามลำดับ
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+/*Return Function + Even Length Checker
+- Write a function createEvenLengthChecker() that:
+- Returns a function that checks if a word has even length
+Example:let isEven = createEvenLengthChecker()
+console.log(isEven("hello")) // false
+console.log(isEven("code")) // true*/
+
+function createEvenLengthChecker(word) {
+    if (typeof word !== "string") return null;
+
+    if ( word.length % 2 == 0 ) { 
+        return true
+    } else {
+        return false
+    }
+}
+
+let isEven = createEvenLengthChecker()
+
+console.log(isEven("hello")) 
+console.log(isEven("code")) 
+
+คำอธิบาย โจทย์สั่งให้เขียน function createEvenLengthChecker เพื่อตรวจสอบคำที่มีจำนวนตัวอักษรเป็นเลขคู่ และประกาศตัวแปร isEven ขึ้นมาเพื่อเรียกใช้งาน function
+createEvenLengthChecker โดยเริ่มต้นด้วยการสร้าง function createEvenLengthChecker ขึ้นมาก่อน และให้รับพารามิเตอร์ word เข้ามา จากนั้นเช็ค type ของ word 
+ว่าเป็น string ไหม ถ้าใช่ให้ดำเนินการเช็คจำนวนตัวอักษรต่อ โดยเขียน for loop ขึ้นมา ถ้าความยาวของ word สามารถหาร 2 ได้ลงตัวไม่มีเศษ (word.length % 2 == 0) 
+ให้ return true แต่ถ้าไม่ใช่ก็ให้ return false จากนั้นประกาศตัวแปร isEven เพื่อเรียกใช้งาน function createEvenLengthChecker ในที่นี้ได้ console.log(isEven("hello"))
+console.log(isEven("code")) ซึ่งได้ผลลัพธ์ออกมาเป็น false และ true ตามลำดับ
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*Return Function + Palindrome Checker
+- Write a function createPalindromeChecker() that:
+- Returns a function that checks if a word is a palindrome
+Example:
+let isPal = createPalindromeChecker()
+console.log(isPal("madam"))*/
+
+function createPalindromeChecker(word) {
+    if (typeof word !== "string") return null;
+
+    if( word == word.split("").reverse().join("")) {
+        return true
+    } else {
+        return false
+    }
+}
+
+let isPal = createPalindromeChecker()
+
+console.log(isPal("madam"))
+console.log(isPal("Thunwawee"))
+
+คำอธิบาย โจทย์สั่งให้เขียน function createPalindromeChecker เพื่อตรวจสอบคำที่ถึงแม้ว่าจะสลับหน้าหลังก็เขียนเหมือนเดิม และประกาศตัวแปร isPal ขึ้นมาเพื่อเรียกใช้งาน function
+createPalindromeChecker โดยเริ่มต้นด้วยการสร้าง function createPalindromeChecker ขึ้นมาก่อน และให้รับพารามิเตอร์ word เข้ามา จากนั้นเช็คว่า word เป็น string จริงไหม
+ถ้าใช่ ให้ดำเนินการต่อ โดยตรวจสอบว่า word มีค่าเท่ากับ word.split("").reverse().join("") เป็นคำสั่งในการสลับ word หน้าหลัง ถ้าเท่ากันจริงให้ return true แต่ถ้าไม้เท่ากัน
+ให้ return false จากนั้นประกาศตัวแปร isPal เพื่อเรียกใช้งาน function createPalindromeChecker ในที่นี้ได้ console.log(isPal("madam")) console.log(isPal("Thunwawee"))
+ซึ่งได้ผลลัพธ์ออกมาเป็น true และ false ตามลำดับ 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*Arguments Object + Multiply Numbers
+- Write a function multiplyAll() that:
+- Accepts any number of parameters
+- Uses the arguments object to multiply all numbers passed
+- Returns the total product
+Example: multiplyAll(2, 3, 4) → 24*/
+
+function multiplyAll() {
+    if ( arguments.length === 0 ) return 0
+
+    let product = 1
+
+    for (let i = 0; i < arguments.length; i++) {
+        product *= arguments[i]
+    } return product
+} 
+
+console.log(multiplyAll(2, 3, 4)); 
+console.log(multiplyAll(5, 10));  
+console.log(multiplyAll(7));       
+
+คำอธิบาย จากโจทย์ให้สร้าง function multiplyAll เพื่อคูณค่าที่ได้รับมาทั้งหมดแล้ว return ผลลัพธ์ ซึ่งเริ่มต้นด้วยการสร้าง function multiplyAll ขึ้นมา จากนั้นทำการเช็ค
+ความยาวของ argument ว่าไม่เป็น 0 และประกาศตัวแปร product ขึ้นมา default = 1 เพื่อเก็บผลลัพธ์ จากนั้นใช้ for loop เพื่อไล่ argument ทั้งหมด และนำมาคูณกัน โดย
+เขียนให้ดำเนินการ คูณ argument ทุกค่าเรื่อย ๆ มาเก็บไว้ใน product (product *= arguments[i]) สุดท้ายให้ return product ออกมา ในที่นี้ได้ลอง console.log(multiplyAll(2, 3, 4)); 
+console.log(multiplyAll(5, 10)); console.log(multiplyAll(7)); จะได้ผลลัพธ์เป็น 24 50 และ 7 ตามลำดับ  
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+น.ส.ธันวาวีร์  นิธิพรชัยวงศ์ 67130500131
