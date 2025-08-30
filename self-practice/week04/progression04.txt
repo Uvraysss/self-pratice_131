@@ -1,0 +1,256 @@
+Self-practice
+Week 04
+In class
+
+//filter function does not change an original array
+const words = ['Mango', 'apple', 'Mangoteen', 'orange', 'mangoes']
+
+คำอธิบาย สร้าง Array ชื่อ words ที่มี 5 element คือ ["Mango", "apple", "Mangoteen", "orange", "mangoes"]
+
+// 1.annonymous arrow function
+const shortWords = words.filter((words) => words.length <= 6)
+
+// 2. annonymous function declaration
+const shortWords = words.filter(function (word) {
+    return word.length <= 6
+})
+
+คำอธิบาย .filter() ใช้ในการคัดกรอง ค่าใน array ซึ่งจะวนดูทุก element แล้วส่งไปยัง callback function 
+ถ้า callback return true ให้เก็บไว้ใน array ใหม่ แต่ถ้า return false ให้ตัดออก ซึ่งในตัวอย่างนี้คือ anonymous arrow function 
+parameter words แทนแต่ละ element ของ words ต่อมา words.length <= 6 เป็นการตรวจว่าความยาวของ string น้อยกว่าหรือเท่ากับ 
+6 ตัวอักษรไหม ผลที่ได้จะเป็น true หรือ false ซึ่งผลลัพธ์ shortWords  จาก array ['Mango', 'apple', 'Mangoteen', 'orange', 'mangoes']
+ตัดออกตามเงื่อนไข length <= 6 จะได้ ['Mango', 'apple', 'orange'] function แบบที่ 1 และ 2 ทำงานเหมือนกัน แค่แบบที่ 1 เขียนในรูปแบบ
+ของ arrow function แต่แบบที่ 2 เขียนในรูปแบบการประกาศ function ธรรมดา
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+// 3. reuse callback function (named function)
+function wordLeangth(word) {
+    return word.length <= 6
+}
+const shortWords = words.filter(wordLeangth)
+
+คำอธิบาย function wordLeangth(word) คือรูปแบบ named function หรือ function ที่มีชื่อคือ wordLeangth ซึ่งมี parameter คือ word 
+จะเป็นแต่ละ element ของ array และ return word.length <= 6 จะคืนค่าเป็น true ถ้า string มีความยาว ≤ 6 แต่จะคืนค่า false ถ้าไม่ใช่
+เมื่อนำไปใช้กับ .filter() const shortWords = words.filter(wordLeangth) .filter() จะเรียก wordLeangth ซ้ำ ๆ สำหรับทุก element 
+ของ words ผลลัพธ์จะมีค่า ["Mango", "apple", "orange"] เหมือนเดิม ตัวอย่างนี้เป็นการเรียกใช้ callback function อีกด้วย
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+const shortWords = words.filter(wordLeangth("apple")) //words.filter(true)
+
+คำอธิบาย การเขียน wordLeangth("apple") คือ การเรียก function ทันที ซึ่งผลลัพธ์ของ wordLeangth("apple") คือ true 
+(เพราะ "apple".length = 5 ≤ 6) สุดท้าย code กลายเป็น const shortWords = words.filter(true) ซึ่งผิด syntax เพราะ filter ต้องการ 
+function แต่กลายเป็นเราส่งค่า boolean เข้าไปแทน
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+//sort function change original array
+const sortedWords = words.sort()
+console.log(words)
+console.log(sortedWords)
+
+คำอธิบาย การทำงานของ .sort() จากในตัวอย้่างคือ words.sort() ซึ่ง .sort() ใช้เรียงลำดับสมาชิกใน array ซึ่งมันจะ แก้ไข array เดิมโดยตรง
+และคืนค่า reference ของ array เดิมกลับมา ในที่นี้ค่า sortedWords และ words ชี้ไปที่ array เดียวกัน หลังจากถูก sort แล้ว
+วิธีเรียงลำดับคือ จะเรียงตาม Unicode ของตัวอักษรซึ่งหมายความว่าอักษรพิมพ์ใหญ่ (M) จะมาก่อนอักษรพิมพ์เล็ก (a) เมื่อ console.log(sortedWords) 
+ออกมาดูจะได้ผลลัพธ์เป็น ["Mango", "Mangoteen", "apple", "mangoes", "orange"] 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+const map1 = words.map( x => x.toUpperCase())
+console.log(map1)
+
+คำอธิบาย method .map() จะสร้าง array ใหม่ โดยแปลงทุก element ด้วยฟังก์ชันที่กำหนด ซึ่งในที่นี้แปลงค่าเป็นตัวพิมพ์ใหญ่ toUpperCase()
+x.toUpperCase() จะทำการแปลง string เป็นตัวพิมพ์ใหญ่ทั้งหมด words = ['Mango', 'apple', 'Mangosteen', 'orange', 'mangoes']
+เมื่อ console.log(map1) ออกมาดูจะได้ผลลัพธ์เท่ากับ ['MANGO', 'APPLE', 'MANGOTEEN', 'ORANGE', 'MANGOES']
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+const students = [
+    { id: 1, name:'Somchai Jaidee'},
+    { id: 2, name: "Suda Deejai" },
+    { id: 3, name: "John Smith" },
+]
+const map2 = students.map( (students) => students.id)
+console.log(map2)
+
+คำอธิบาย ในตัวอย่างนี้เป็นการ map เพื่อดึงค่าออกมาแค่ id ของ students จึงเขียนคำสั่ง .map( (students) => students.id)
+และเมื่อ console.log(map2) ออกมาจะได้ค่าเท่ากับ map2 = [1, 2, 3] 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+const map3 = students.map((students) => students.id).filter(id => id % 2 == 0)
+console.log(map3)
+
+คำอธิบาย ตัวอย่างนี้ต้องการดึงค่า id ของ students ออกมา แล้วกรองต่อด้วย filter ให้ได้ id เลขคู่เท่านั้น ซึ่งใช้การ map เพื่อให้ได้ id students
+ออกมาก่อน แล้วค่อยกรองด้วยคำสั่ง filter(id => id % 2 == 0) เพื่อให้ได้รหัสนักศึกษาที่เป็นเลขคู่อีกที ผลที่ได้จะเป็น map3 = [2] ซึ่งลำดับของการใช้ 
+method .map และ .filter ส่งผลกระทบต่อผลลัพธ์ที่ได้ ควรระวัง 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+//return all words that include 'mango' 
+//result ['Mango', 'Mangoteen']
+
+const map4 = words.filter((words) => words.toUpperCase().includes('MANGO'))
+console.log(map4)
+
+คำอธิบาย จากในตัวอย่าง .filter() เพื่อคัดเอาเฉพาะคำ ที่มีคำว่า "MANGO" อยู่ด้านใน ก่อนอื่นเราใช้คำสั่ง .toUpperCase() เพื่อทำให้ไม่สนตัวอักษรใหญ่เล็ก
+ซึ่ง words จะถูกแปลงได้เป็น ['MANGO', 'APPLE', 'MANGOTEEN', 'ORANGE', 'MANGOES'] และเมื่อ .includes('MANGO') จะเป็นการตรวจสอบ
+คำที่มี MANGO อยู่ เมื่อ console.log(map4) มาจะมีค่าเป็น ['Mango', 'Mangosteen', 'mangoes']
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+//includes() -> array
+console.log(words.includes("Apple"))
+console.log(words.includes("apple")) // case sensitive ตัวเล็กตัวใหญ่มีผลต่างกัน
+
+คำอธิบาย ตัวอย่างนี้เป็นการอธิบาย method .include เป็น method สำหรับเช็คว่ามี element ตรงกับค่าที่ใส่หรือไม่ ซึ่งมี Case sensitive ตัวอักษรเล็กใหญ่ต่างกัน
+ถ้า words = ['Mango', 'apple', 'Mangosteen', 'orange', 'mangoes'] เมื่อ words.includes("Apple") จะได้ผลลัพธ์คือ false เพราะไม่มี "Apple" 
+ที่เป็นตัว A ใหญ่ ต่อมา words.includes("apple") มีค่าเป็น true
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+//check array that has word "apple" or not if has display 'has apple', otherwise, display 'dose not have apple'
+function Find1(words) {
+    if (words.find( word => word.toUpperCase().includes("APPLE"))) {
+        return "has apple";
+    } else {
+        return "does not have apple";
+    }
+}
+
+console.log(Find1(words))
+
+คำอธิบาย ตัวอย่างนี้อธิบายการตรวจสอบว่าใน array มีคำที่เกี่ยวข้องกับ "apple" อยู่หรือไม่ ถ้ามีให้แสดงข้อความว่า "has apple" แต่ถ้าไม่มีให้แสดงว่า 
+"does not have apple" วิธีการทำงานคือ ใช้ .find() ของ array ซึ่งหน้าที่ของ .find() คือการวนหาสมาชิกใน array ทีละตัว 
+แล้วตรวจสอบตามเงื่อนไขที่กำหนด ในกรณีนี้ คือให้แปลงคำแต่ละคำใน array เป็นตัวพิมพ์ใหญ่ทั้งหมด แล้วเช็คว่ามีคำว่า "APPLE" word.toUpperCase().includes
+("APPLE") อยู่ในสตริงนั้นหรือไม่ หากพบว่าเจอคำว่า "APPLE" ให้ return "has apple" แต่ถ้าไม่พบให้ return "does not have apple" แทน สุดท้ายเมื่อ 
+console.log(Find1(words)) จะได้ผลลัพธ์เท่ากับ "has apple"
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+const sentence = "The quick brown for jumps over the lazy dog."
+const word = "Ox"
+console.log(sentence.includes(word))
+
+คำอธิบาย ตัวอย่างนี้มีประกาศค่า sentence เป็น string คือ "The quick brown for jumps over the lazy dog." และ มีการประกาศค่า word เป็น string 
+เช่นกัน คือ "Ox" ต่อมา console.log(sentence.includes(word)) โดยใช้ method .include เพื่อ check ว่ามี word อยู่ใน sentence หรือไม่ หรือ "Ox" อยู่ใน
+"The quick brown for jumps over the lazy dog." หรือไม่ ซึ่งผลลัพธ์ที่ได้คือ false
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+num = 2
+let x = num % 2 === 0 ? "even" : "odd"
+
+คำอธิบาย ตัวอย่าง code นี้ อธิบายเรื่องของการใช้ ternary operator เริ่มจากการกำหนดค่า num = 2 และ let x = num % 2 === 0 ? "even" : "odd" คือ 
+ตรวจสอบว่า num % 2 === 0 ไหม ถ้า === 0 ให้ return ค่า even ออกมา แต่ถ้าไม่ === 0 ให้ return ค่า odd ออกมาแทน
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+const product = [1, 'RED', 102]
+const productDetail = product.reduce((detail, prop) => {
+    return prop === 'RED' ? detail?.concat('R') : detail?.concat(prop)
+}, '') 
+console.log(productDetail)
+
+คำอธิบาย ตัวอย่างนี้เป็นการอธิบาย method reduce ซึ่งเริ่มต้นมีการประกาศตัวแปร product เป็น array ที่มีค่า [1, 'RED', 102] ซึ่งมีการประกาศตัวแปรใหม่
+คือ productDetail และใช้คำสั่ง product.reduce(detail, prop) => .reduce() จะวนผ่านทุก element ของ array และ callback(detail, prop)
+detail คือ accumulator (สะสมค่าที่ได้จากรอบก่อนหน้า) ส่วน prop คือ element ปัจจุบัน มีการเช็คว่า element ปัจจุบัน (prop) เป็น 'RED' หรือไม่
+ถ้าใช่ให้เอา accumulator detail มาต่อ "R" แต่ถ้าไม่ใช่ให้เอา detail มาต่อค่าของ prop โดยตรง ซึ่งเมื่อ console.log(productDetail) ออกมาจะได้ค่าเท่ากับ
+'1R102'
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+const cart = [
+    { productID:1001, price: 500, quantity: 2 },
+    { productID:1002, price: 10, quantity: 3 },
+    { productID:1003, price: 5, quantity: 10 },
+]
+//find cart total and return object that show the total {total: 1080}
+const total = cart.map(product => product.price * product.quantity)
+                  .reduce((sum, price) => sum + price, 0);
+
+console.log(total)
+
+คำอธิบาย ตัวอย่างนี้ต้องการหาผลรวมราคาทั้งหมดของสินค้าที่อยู่ในตะกร้า โดยแต่ละสินค้ามี ราคา และ จำนวน ขั้นแรกเรามี array cart ซึ่งเก็บ object ของสินค้าทั้ง 3 ชิ้น 
+จากนั้นเราก็ใช้ .map() เพื่อแปลงข้อมูลแต่ละ object ให้กลายเป็น ราคาของสินค้านั้น ๆ โดยคำนวณจาก price * quantity
+สำหรับสินค้าแรก: 500 * 2 = 1000 สำหรับสินค้าอันที่สอง: 10 * 3 = 30 และสำหรับสินค้าอันที่สาม: 5 * 10 = 50 โดยผลลัพธ์จาก .map() คือ array ของราคาทั้งหมด 
+เป็นดังนี้ [1000, 30, 50] ต่อมาก็นำ array นี้ไปใช้กับ .reduce() เพื่อรวมค่าทั้งหมดเข้าด้วยกัน .reduce() จะวนผ่านแต่ละ element ของ array และสะสมผลรวม (sum)
+เริ่มต้น sum = 0 บวกค่าทีละตัวจะได้ 0 + 1000 + 30 + 50 ซึ่งผลลัพธ์สุดท้ายคือ 1080 เป็นยอดรวมราคาสินค้าทั้งหมดในตะกร้า
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+// cart[cart.length] = { productId: 5555, price: 1, quantity: 4 }
+cart.push({ productId: 5555, price: 1, quantity: 4 })
+console.log(cart)
+console.log(cart.pop()) //{ productId: 5555, price: 1, quantity: 4 }
+console.log(cart.length) //3
+
+คำอธิบาย ตัวอย่างนี้อธิบายการทำงานของ .push({ ... }) ซึ่ง .push() ใช้เพิ่ม element ใหม่เข้าไปท้าย array ในที่นี้เราเพิ่มสินค้าใหม่ 
+{ productId: 5555, price: 1, quantity: 4 } หลังจาก push แล้ว จำนวนสมาชิกใน cart เพิ่มขึ้นจาก 3 เป็น 4 เมื่อ console.log(cart) จะได้ผลลัพธ์คือ
+[
+    { productID:1001, price: 500, quantity: 2 },
+    { productID:1002, price: 10, quantity: 3 },
+    { productID:1003, price: 5, quantity: 10 },
+    { productId: 5555, price: 1, quantity: 4 }
+]
+ต่อมา cart.pop() .pop() จะลบ element ตัวสุดท้ายของ array และคืนค่าของ element นั้น ในที่นี้จะลบ { productId: 5555, price: 1, quantity: 4 } ออก
+ดังนั้น array จะกลับมาเหมือนเดิม console.log(cart.length) แสดงความยาวของ array หลังจาก pop เพราะลบ element ท้ายสุดไปแล้ว ความยาวจะกลับมาเป็น 3
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+//unshift
+console.log(cart.unshift({ productId: 1000, price: 1, quantity: 4 })) 
+console.log(cart)
+console.log(cart.length)
+//shift
+console.log(cart.shift())
+console.log(cart)
+console.log(cart.length)
+
+คำอธิบาย คำอธิบาย ตัวอย่างนี้อธิบายการทำงานของ .unshift({ ... }) ซึ่ง .unshift() ใช้เพิ่ม element ใหม่เข้าไปในตำแหน่งแรกของ array ในที่นี้เราเพิ่มสินค้าใหม่ 
+{ productId: 5555, price: 1, quantity: 4 } หลังจาก unshift แล้ว จำนวนสมาชิกใน cart เพิ่มขึ้นจาก 3 เป็น 4 เมื่อ console.log(cart) จะได้ผลลัพธ์คือ
+[
+    { productId: 5555, price: 1, quantity: 4 },
+    { productID:1001, price: 500, quantity: 2 },
+    { productID:1002, price: 10, quantity: 3 },
+    { productID:1003, price: 5, quantity: 10 }
+]
+ต่อมา cart.shift() .shift() จะลบ element ตำแหน่งแรกของ array และคืนค่าของ element นั้น ในที่นี้จะลบ { productId: 5555, price: 1, quantity: 4 } ออก
+ดังนั้น array จะกลับมาเหมือนเดิม console.log(cart.length) แสดงความยาวของ array หลังจาก pop เพราะลบ element ท้ายสุดไปแล้ว ความยาวจะกลับมาเป็น 3
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+const words1 = ["Mango", "Apple", "mangoteen", "orange", "mangoes"]
+words1.splice(2, 1, 'banana') // replace "mangoteen" with 'banana'
+console.log(words1)
+words1.splice(3,2) // remove the last two words
+console.log(words1)
+words1.splice(2, 0 ,'melon', 'cherry') // add 'melon' and 'cherry' after 'Apple'
+console.log(words1)
+
+คำอธิบาย ตัวอย่างนี้ต้องการอธิบายเกี่ยวกับ method .splice ซึ่งเริ่มต้นโดยการประกาศตัวแปร words1 มีค่าเท่ากับ ["Mango", "Apple", "mangoteen", "orange", "mangoes"]
+ต่อมา words1.splice(2, 1, 'banana') คือการสั่งให้ แทนที่ mangoteen ด้วย banana (2, 1, 'banana') 2 หมายถึง ตำแหน่งที่ 2, 1 หมายถึง ลบ 1 element 
+และใส่ banana แทน ต่อมา words1.splice(3,2) คือการลบ 2 element เริ่มต้นที่ตำแหน่งที่ 3 สุดท้าย words1.splice(2, 0 ,'melon', 'cherry') เป็นการเพิ่ม 
+'melon', 'cherry'ลงไปใน array ตั้งแต่ตำแหน่งที่ 2 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+const words2 = ["Mango", "Apple", "mangosteen", "orange", "mangoes"]
+
+//slice items at index 2 to last
+console.log(words2.slice(2))  
+// //slice the first to third items
+console.log(words2.slice(0,3))
+
+คำอธิบาย ตัวอย่างนี้ต้องการอธิบายเกี่ยวกับ method .slice ซึ่งเริ่มต้นโดยการประกาศตัวแปร words2 มีค่าเท่ากับ ["Mango", "Apple", "mangosteen", "orange", "mangoes"]
+ต่อมา console.log(words2.slice(2)) คือการสั่งให้แสดงค่าตั้งแต่ตำแหน่งที่ 2 ถึงตำแหน่งสุดท้ายของ array ["mangosteen", "orange", "mangoes"] ต่อมา 
+console.log(words2.slice(0,3)) เป็นการให้แสดงค่าตั้งแต่ตำแหน่งที่ 0 ถึงตำแหน่งที่ 2 ของ array ["Mango", "Apple", "mangosteen"]
+
+//fill null to all items
+console.log(words2.fill(null))
+
+คำอธิบาย ตัวอย่างนี้ต้องการอธิบายเกี่ยวกับ method .fill ซึ่งคำสั่ง console.log(words2.fill(null)) คือ ต้องการให้แสดงค่า null ในทุกตัวของ array แทน ผลลัพธ์ที่ได้จะมี
+ค่าเป็น [null, null, null, null, null] 
+
+-------------------------------------------------------------------------------------------------------------------------------------

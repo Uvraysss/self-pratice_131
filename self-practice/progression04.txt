@@ -1,0 +1,24 @@
+
+สรุปเนื้อหาที่ได้เรียนรู้ในสัปดาห์ที่ 4
+
+    ได้เรียนรู้และลองใช้ method ต่าง ๆ ในหลาย ๆ วิธี ดังนี้ .filter() ใช้เพื่อคัดเลือก element ตามเงื่อนไข 
+โดยจะคืนค่าเป็น array ใหม่ เช่น words.filter((words) => words.length <= 6) คือ การกรองคำที่มีความยาว
+ไม่เกิน 6 ตัวอักษร หรือ words.filter((words) => words.toUpperCase().includes('MANGO')) ค้นหาคำที่มี 
+"MANGO" ซึ่งใช้งานร่วมกับ .toUpperCase เพื่อทำให้เป็นตัวพิมพ์ใหญ่ทั้งหมด เนื่องจากเป็น case sensitive และมี 
+.include สำหรับ check ว่ามีคำว่า MANGO ไหม ต่อมา .find() และ .some() เป็นเครื่องมือที่คล้ายกัน แต่ใช้เช็คว่ามี 
+element ตรงตามเงื่อนไขหรือไม่ (find คืนค่า element แรก ส่วน some คืนค่า true/false) .map() ใช้เพื่อ 
+แปลงค่าใน array ทั้งหมด แล้วคืน array ใหม เช่น แปลงคำให้เป็นตัวพิมพ์ใหญ่ หรือดึงเฉพาะ id ของ object 
+ดังตัวอย่าง students.map( (students) => students.id) .reduce() ใช้เพื่อ รวมค่าหรือสะสมค่าจาก array เช่น 
+คำนวณ string สะสมจาก element หลายตัว หรือรวมราคาสินค้าในตะกร้า .reduce((sum, price) => sum + price, 0);
+การตรวจสอบค่าใน array หรือ string เช่น .includes() ใช้ตรวจสอบว่า มี element หรือคำที่ตรงกันใน 
+array, string หรือไม่ ตัวพิมพ์ใหญ่เล็กมีผลเนื่องจากเป็น case sensitive สามารถใช้ .toUpperCase() หรือ 
+.toLowerCase() ทำให้ไม่สนตัวพิมพ์ ต่อมา Stack และ Queue operations เช่นพวก method .push() เป็นการเพิ่ม 
+element ท้าย array และ.pop() คือลบ element ท้าย array ซึ่ง .push และ .pop เป็นแบบ Stack คือเข้าก่อน ออกทีหลัง 
+ต่อมา .unshift() เป็นการเพิ่ม element หน้า array และ .shift() คือการลบ element หน้า array ซึ่งเป็นแบบ Queue 
+คือเข้าก่อน ออกก่อน method splice() เป็นวิธีที่ยืดหยุ่นในการ แก้ไข array ใช้ได้ทั้ง ลบ แทนที่ หรือแทรก element รูปแบบ: 
+array.splice(start, deleteCount, item1, item2, ...) สุดท้ายเป็นเรื่องของ .slice ใช้คัดลอกส่วนของ array หรือ string 
+ออกมาเป็น array หรือ string ใหม่ ไม่แก้ไขของเดิม มีรูปแบบเป็น array.slice(startIndex, endIndex) ซึ่ง startIndex 
+คือตำแหน่งเริ่มคัดลอก และ endIndex คือตำแหน่งสิ้นสุด (ไม่รวมตัวนี้ในการแสดงผล) ถ้าไม่ใส่ endIndex โปรแกรมจะคัดลอกถึง ท้าย 
+array หรือ string
+
+-----------------------------------------------------------------------------------------------------------------
