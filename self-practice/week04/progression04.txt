@@ -254,3 +254,140 @@ console.log(words2.fill(null))
 ค่าเป็น [null, null, null, null, null] 
 
 -------------------------------------------------------------------------------------------------------------------------------------
+
+// practice
+/*Problem 1 – Filter Short Words
+- Given the following array of words:
+- const // practice
+
+/*Problem 1 – Filter Short Words
+- Given the following array of words:
+- const fruits = ["Mango", "Apple", "Banana", "Kiwi", "Orange"];
+Task: Use .filter() to find only the words with length ≤ 5 and display the result.*/
+
+const fruits = ["Mango", "Apple", "Banana", "Kiwi", "Orange"]
+const fruitShortwords = fruits.filter((fruit) => fruit.length <= 5) 
+console.log(fruitShortwords) //[ 'Mango', 'Apple', 'Kiwi' ]
+
+คำอธิบาย จากโจทย์ให้ประกาศตัวแปร fruits = ["Mango", "Apple", "Banana", "Kiwi", "Orange"] แล้วให้เขียนคำสั่งเพื่อหาคำที่มีความยาว <= 5 จาก code 
+เริ่มต้นด้วยการประกาศตัวแปร fruits ต่อมากำหนด fruitShortwords เพื่อเขียน arrow function ได้เป็น fruitShortwords = 
+fruits.filter((fruit) => fruit.length <= 5) ซึ่งในที่นี้ได้ใช้ method .filter เพื่อที่จะกรองคำที่มีความยาวน้อยกว่าหรือเท่ากับ 5 เมื่อ console.log(fruitShortwords)
+ออกมา จะได้ผลลัพธ์เป็น [ 'Mango', 'Apple', 'Kiwi' ]
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/*Problem 2 – Map to Uppercase
+- Use the same fruits array.
+Task: Use .map() to convert all words to uppercase and display the result.*/
+
+const fruitUppercase = fruits.map((fruit) => fruit.toUpperCase()) 
+console.log(fruitUppercase) //[ 'MANGO', 'APPLE', 'BANANA', 'KIWI', 'ORANGE' ]
+
+คำอธิบาย โจทย์ต้องการให้ใช้ array fruits เดิม แต่ต้องการให้แสดงค่าด้านในเป็นตัวพิมพ์ใหญ่ทั้งหมด โดยการเขียนคำสั่งนี้ เริ่มต้นจากการกำหนด fruitUppercase ขึ้นมาเพื่อเขียน 
+arrow function ได้เป็น fruitUppercase = fruits.map((fruit) => fruit.toUpperCase()) ซึ่งในที่นี้ใช้ method .map เพื่อวนค่าทุกตัวใน array และสร้าง array 
+ผลลัพธ์ใหม่ ตรวจสอบตามเงื่อนไขโดยใช้ .toUpperCase() เพื่อแปลงตัวอักษรทั้งหมดให้กลายเป็นตัวพิมพ์ใหญ่ สุดท้ายเมื่อ console.log(fruitUppercase) จะได้ผลลัพธ์เท่ากับ 
+[ 'MANGO', 'APPLE', 'BANANA', 'KIWI', 'ORANGE' ]
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/*Problem 3 – Find Maximum and Minimum
+- You are given an array of numbers:
+const numbers = [12, 45, 7, 32, 89, 5, 77];
+Task: Use .reduce() to find the maximum value (max).
+      Use .reduce() to find the minimum value (min).
+- Display the result as an object, for example: { max: 89, min: 5 }*/
+
+const numbers = [12, 45, 7, 32, 89, 5, 77]
+const max = numbers.reduce((acc,num) => (num > acc ? num : acc), numbers[0])
+const min = numbers.reduce((acc,num) => (num < acc ? num : acc), numbers[0])
+
+const result = { max: max, min: min }
+console.log(result) // { max: 89, min: 5 }
+
+คำอธิบาย จากโจทย์ให้ประกาศตัวแปร numbers = [12, 45, 7, 32, 89, 5, 77] แล้วให้ใช้ .reduce เพื่อหาค่าสูงสุด และค่าต่ำสุด และ return ค่าออกมาเป็น object
+ตัวอย่างเช่น { max: 89, min: 5 } ซึ้งเริ่มต้นด้วยการกำหนดตัวแปร ต่อมากำหนดค่า max โดยใช้ arrow function ในการเขียน ให้เก็บค่า acc เปรียบเทียบกับค่า num 
+เมื่อค่า num สูงกว่า ค่า acc ให้ return num แต่ถ้าไม่สูงกว่าให้ return ค่า acc เหมือนเดิม และมีการกำหนดค่า min โดยใช้ arrow function ในการเขียน ให้เก็บค่า 
+acc เปรียบเทียบกับค่า num เมื่อค่า num น้อยกว่า ค่า acc ให้ return num แต่ถ้าไม่น้อยกว่าให้ return ค่า acc เหมือนเดิม เป็นเหมือนการวนลูปเพื่ือเทียบค่าไปเรื่อย สุดท้าย
+กำหนด result ให้แสดงค่าในรูปแบบของ { max: max, min: min } จากนั้น console.log(result) ออกมาดูจะได้ผลลัพธ์เท่ากับ { max: 89, min: 5 }
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/*Problem 4 – Check Even Numbers
+You are given an array of numbers:
+const numbers = [3, 8, 12, 5, 7, 10];
+Task: Write a function to check if the array contains any even numbers.
+If yes → display "Has even number"
+If no → display "Does not have even number" */
+
+const Numbers = [3, 8, 12, 5, 7, 10]
+
+function Some(Numbers) {
+    if (Numbers.some(num => num % 2 === 0)) {
+        return "Has even number"
+    } else {
+        return "Does not have even number"
+    }
+}
+
+คำอธิบาย จากโจทย์ต้องการให้ประกาศตัวแปร const numbers = [3, 8, 12, 5, 7, 10] และตรวจสอบว่าใน array numbers นี้มีเลขคู่อยู่ไหม ถ้าเจอตัวใดตัวหนึ่งเป็น
+เลขคู่ให้ return Has even number แต่ถ้าไม่พบเลขคู่เลยให้ return Does not have even number ซึ่งเริ่มต้นเขียน code จากการประกาศตัวแปร number ก่อน จากนั้น
+เขียน if else เพื่อตรวจสอบ โดยใช้ method .some เช็คโดยวนลูปหาว่ามีเลขที่หาร 2 แล้วเศษเท่ากับ 0 (เลขคู่) อยู่หรือไม่ โดยเขียนเป็นคำสั่งเช็คเงื่อนไขได้ดังนี้ 
+Numbers.some(num => num % 2 === 0) ซึ่งถ้าพบเลขที่เป็นตามเงื่อนไขให้ return ค่า "Has even number" แต่ถ้าไม่พบให้ return ค่า "Does not have even number"
+แทน จากข้อนี้เมื่อ console.log(Some(Numbers)) ออกมา จะได้ผลลัพธ์เท่ากับ Has even number
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/*Problem 5 – Add/Remove Elements
+- Given the array:
+let colors = ["Red", "Green", "Blue"];
+Task: Add "Yellow" to the end of the array
+      Add "Black" to the beginning of the array
+      Remove 1 element from the beginning of the array
+      Remove 1 element from the end of the array
+Display the current array and its length*/
+
+let colors = ["Red", "Green", "Blue"]
+
+colors.push("Yellow")
+colors.unshift("Black")
+console.log(colors) //["Black", "Red", "Green", "Blue", "Yellow"]
+console.log(colors.length) // 5
+colors.pop()
+colors.shift()
+console.log(colors) //["Red", "Green", "Blue"]
+console.log(colors.length) //3
+
+คำอธิบาย จากโจทย์ให้สร้างตัวแปร colors = ["Red", "Green", "Blue"] ขึ้นมา และให้เพิ่ม "Yellow" เข้าไปในท้าย array ซึ่งเขียนได้ว่า colors.push("Yellow")
+และ ให้เพิ่ม "Black" เข้าไปตำแหน่งแรกของ array ซึ่งเขียนได้ว่า colors.unshift("Black") เมื่อ console.log(colors) และ console.log(colors.length)
+มาดูค่า จะได้ผลลัพธ์เป็น ["Black", "Red", "Green", "Blue", "Yellow"] และ 5 ตามลำดับ ต่อมาโจทย์ต้องการให้ นำตำแหน่งท้าย array ออก 1 ตำแหน่ง คำสั่งคือ 
+colors.pop() และตำแหน่งแรกของ array ออกอีก 1 ตำแหน่ง คำสั่งคือ colors.shift() เมื่อ console.log(colors) และ console.log(colors.length) 
+ออกมาได้้ผลลัพธ์เป็น ["Red", "Green", "Blue"] และ 3 ตามลำดับ
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/*problem 6 – Using splice
+- Given the array:
+let animals = ["Cat", "Dog", "Elephant", "Lion"];
+Task: Replace "Elephant" with "Tiger"
+      Remove "Lion"
+      Insert "Monkey" and "Giraffe" after "Dog"
+Display the final array*/
+
+let animals = ["Cat", "Dog", "Elephant", "Lion"]
+
+animals.splice(2, 1, "Tiger")
+console.log(animals) //["Cat", "Dog", "Tiger", "Lion"]
+animals.splice(3, 1)
+console.log(animals) //["Cat", "Dog", "Tiger"]
+animals.splice(2, 0, "Monkey", "Giraffe")
+console.log(animals) //["Cat", "Dog", "Monkey", "Giraffe", "Tiger"]
+
+คำอธิบาย จากโจทย์ต้องการให้ประกาศตัวแปร animals = ["Cat", "Dog", "Elephant", "Lion"] และแบ่งโจทย์เป็นโจทย์ย่อย 3 ข้อ คือ 1.ให้แทนที่ "Elephant" ด้วย "Tiger"
+ซึ่งเขียนคำสั่งโดยใช้ method .splice ได้เป็น animals.splice(2, 1, "Tiger") คือเริ่มแก้ไขที่ตำแหน่งที่ 2 โดยลบออก 1 element และแทนที่ด้วย "Tiger" ซึ่งเมื่อ console.log(animals)
+ออกมา array จะเปลี่ยนไปเป็น ["Cat", "Dog", "Tiger", "Lion"] ต่อมาข้อที่ 2 ให้ลบ "Lion" ออกจาก array เขียนคำสั่งได้ว่า animals.splice(3, 1) หมายถึง เริ่มแก้ที่
+ตำแหน่ง 3 ของ array และลบ 1 element เมื่อ console.log(animals) ออกมา array จะเปลี่ยนไปเป็น ["Cat", "Dog", "Tiger"] แทน สุดท้ายข้อที่ 3 ต้องการให้นำ  "Monkey" และ "Giraffe" 
+ใส่เข้าไปหลังจาก "Dog" ซึ่งเขียนคำสั่งได้ว่า animals.splice(2, 0, "Monkey", "Giraffe") หมายถึง เริ่มแก้ไขที่ตำแหน่งที่ 2 ลบ 0 element เพิ่ม "Monkey" และ "Giraffe"
+เมื่อ console.log(animals) จะได้ผลลัพธ์เป็น ["Cat", "Dog", "Monkey", "Giraffe", "Tiger"]
+
+-------------------------------------------------------------------------------------------------------------------------------------
+น.ส.ธันวาวีร์  นิธิพรชัยวงศ์ 67130500131

@@ -110,3 +110,91 @@ console.log(words2.slice(2))
 console.log(words2.slice(0,3))
 //fill null to all items
 console.log(words2.fill(null))
+
+// practice
+
+/*Problem 1 – Filter Short Words
+- Given the following array of words:
+- const fruits = ["Mango", "Apple", "Banana", "Kiwi", "Orange"];
+Task: Use .filter() to find only the words with length ≤ 5 and display the result.*/
+
+const fruits = ["Mango", "Apple", "Banana", "Kiwi", "Orange"]
+const fruitShortwords = fruits.filter((fruit) => fruit.length <= 5) 
+console.log(fruitShortwords) //[ 'Mango', 'Apple', 'Kiwi' ]
+
+/*Problem 2 – Map to Uppercase
+- Use the same fruits array.
+Task: Use .map() to convert all words to uppercase and display the result.*/
+
+const fruitUppercase = fruits.map((fruit) => fruit.toUpperCase()) 
+console.log(fruitUppercase) //[ 'MANGO', 'APPLE', 'BANANA', 'KIWI', 'ORANGE' ]
+
+/*Problem 3 – Find Maximum and Minimum
+- You are given an array of numbers:
+const numbers = [12, 45, 7, 32, 89, 5, 77];
+Task: Use .reduce() to find the maximum value (max).
+      Use .reduce() to find the minimum value (min).
+- Display the result as an object, for example: { max: 89, min: 5 }*/
+
+const numbers = [12, 45, 7, 32, 89, 5, 77]
+const max = numbers.reduce((acc,num) => (num > acc ? num : acc), numbers[0])
+const min = numbers.reduce((acc,num) => (num < acc ? num : acc), numbers[0])
+
+const result = { max: max, min: min }
+console.log(result) // { max: 89, min: 5 }
+
+/*Problem 4 – Check Even Numbers
+You are given an array of numbers:
+const numbers = [3, 8, 12, 5, 7, 10];
+Task: Write a function to check if the array contains any even numbers.
+If yes → display "Has even number"
+If no → display "Does not have even number" */
+
+const Numbers = [3, 8, 12, 5, 7, 10]
+
+function Some(Numbers) {
+    if (Numbers.some(num => num % 2 === 0)) {
+        return "Has even number"
+    } else {
+        return "Does not have even number"
+    }
+}
+
+console.log(Some(Numbers)) //"Has even number"
+
+/*Problem 5 – Add/Remove Elements
+- Given the array:
+let colors = ["Red", "Green", "Blue"];
+Task: Add "Yellow" to the end of the array
+      Add "Black" to the beginning of the array
+      Remove 1 element from the beginning of the array
+      Remove 1 element from the end of the array
+Display the current array and its length*/
+
+let colors = ["Red", "Green", "Blue"]
+
+colors.push("Yellow")
+colors.unshift("Black")
+console.log(colors) //["Black", "Red", "Green", "Blue", "Yellow"]
+console.log(colors.length) // 5
+colors.pop()
+colors.shift()
+console.log(colors) //["Red", "Green", "Blue"]
+console.log(colors.length) //3
+
+/*problem 6 – Using splice
+- Given the array:
+let animals = ["Cat", "Dog", "Elephant", "Lion"];
+Task: Replace "Elephant" with "Tiger"
+      Remove "Lion"
+      Insert "Monkey" and "Giraffe" after "Dog"
+Display the final array*/
+
+let animals = ["Cat", "Dog", "Elephant", "Lion"]
+
+animals.splice(2, 1, "Tiger")
+console.log(animals) //["Cat", "Dog", "Tiger", "Lion"]
+animals.splice(3, 1)
+console.log(animals) //["Cat", "Dog", "Tiger"]
+animals.splice(2, 0, "Monkey", "Giraffe")
+console.log(animals) //["Cat", "Dog", "Monkey", "Giraffe", "Tiger"]
