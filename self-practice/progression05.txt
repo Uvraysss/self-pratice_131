@@ -1,0 +1,39 @@
+
+สรุปเนื้อหาที่ได้เรียนรู้ในสัปดาห์ที่ 5
+
+    เริ่มต้นจากการทำงานกับ Array และ Method พื้นฐาน เช่น .filter() ใช้ในการกรองข้อมูลตามเงื่อนไข เช่น เลือกเฉพาะนักเรียนที่สอบผ่าน (score >= 70)
+.map() ใช้ในการวนค่าและแปลงค่าของ array เช่น เปลี่ยนชื่อเป็นตัวพิมพ์ใหญ่ (.toUpperCase) .concat() ใช้ในการเชื่อมต่อ array เข้าด้วยกัน .toString() 
+ใช้เพื่อแปลง array ให้กลายเป็น string .reverse() ใช้ในการสลับลำดับ array ซึ่งมีข้อควรระวังเพราะแก้ไขที่ array ต้นฉบับโดยตรง สุดท้าย .sort() ใช้สำหรับ
+การเรียงลำดับ ซึ่งปกติจะเรียงตามตัวอักษร ถ้าต้องการเรียงตัวเลข ต้องใส่ function เปรียบเทียบเช่น (a, b) => a - b สามารถเรียง object โดยใช้ localeCompare() 
+กับ string เพื่อเรียงตามตัวอักษรภาษา (a-z) หัวข้อต่อมาคือการตรวจสอบชนิดข้อมูล Array ใช้ Array.isArray(value) เพื่อตรวจสอบว่า value เป็น array หรือไม่
+ตัวอย่างเช่น Array.isArray([]) ผลลัพธ์คือ true (เป็น array) ต่อมา Array.isArray("[]") ผลลัพธ์คือ false (เป็น string) สุดท้าย Array.isArray([1, true]) 
+ผลลัพธ์คือ true เมื่อมี object array เช่นรายชื่อนักเรียน {id, name, email} สามารถเรียงลำดับตาม name ได้ด้วย .sort() และ .localeCompare()
+หรือใช้เงื่อนไขเปรียบเทียบ if-else แทนก็ได้ ผลลัพธ์เหมือนกัน ต่อมาหัวข้อของ JavaScript Module คือไฟล์ JS แยกย่อย ที่สามารถ export (ส่งออก) และ import (นำเข้า) 
+เพื่อใช้ในไฟล์อื่น มีจุดประสงค์หลักคือ  ทำให้โค้ดแบ่งเป็นส่วน ๆ (modular) ลดความซ้ำซ้อน ป้องกันการชนกันของตัวแปร หรือฟังก์ชัน ทำให้โค้ดอ่านง่ายและ maintain ง่ายขึ้น
+ตัวอย่างของ CommonJS การส่งออกใช้ module.exports การนำเข้าใช้ require() ตัวอย่าง code export และ import ดังนี้
+
+// utility.js
+function echo(v){ return v }
+const getLength = str => str.length
+const MAXStudent = 60
+module.exports = { echo, getLength, MAXStudent }
+
+// commonJSTest.js
+const { echo, getLength, MAXStudent } = require("./utility.js")
+
+ต่อมา ตัวอย่างของ ES Module (ESM) การส่งออกใช้ export และ export default ส่วนการนำเข้าใช้ import ตัวอย่าง code เป็นดังนี้
+
+// utility.js
+function echo(v){ return v }
+export default function getLength(str){ return str.length }
+const TAX = 0.7
+class Book { ... }
+export { Book, echo, TAX as VAT }
+
+// esModuleTest.js
+import strLength, { Book, echo as repeat, VAT } from "./utility.js"
+
+default export สามารถส่งออกได้ 1 อย่างต่อไฟล์ และสามารถตั้งชื่อใหม่ตอน import ได้
+named export สามารถส่งออกได้หลายอย่าง และตอน import ต้องใช้ชื่อที่ตรงกัน (ยกเว้นใช้ as เปลี่ยนชื่อ)
+
+-----------------------------------------------------------------------------------------------------------------

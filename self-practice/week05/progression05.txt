@@ -1,0 +1,179 @@
+Self-practice
+Week 05
+In class
+
+const studentScores = [
+    { name: 'Alice', score: 85 },
+    { name: 'Bob', score: 92 },
+    { name: 'Charlie', score: 68 },
+    { name: 'David', score: 55 },
+    { name: 'Eve', score: 78 }
+]
+
+const passingNames = function getPassingName(studentScore) {
+    return studentScore.filter(student => student.score >= 70) 
+                       .map(student => student.name.toUpperCase()) 
+}
+
+console.log(passingNames)
+
+คำอธิบาย จากตัวอย่าง Code นี้ต้องการให้รับ parameter เป็น object studentScore เข้ามา จากนั้นให้ return เป็นชื่อนักเรียนที่ได้คะแนนมากกว่าหรือเท่ากับ 70 คะแนน
+เป็นตัวพิมพ์ใหญ่ จึงเขียนเป็น studentScore.filter(student => student.score >= 70).map(student => student.name.toUpperCase()) โดยใช้ method .
+.filter เพื่อกรองนักเรียนที่ได้คะแนนมากกว่าหรือเท่ากับ 70 คะแนนก่อน แล้วใช้ method .map เพื่อเปลี่ยนชื่อนักเรียนให้เป็นตัวอักษรตัวพิมพ์ใหญ่ โดยวนค่า name ใน 
+object studentScores แล้วสร้าง Array ใหม่ ได้ผลลัพธ์เป็น [ 'ALICE', 'BOB', 'EVE' ]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+console.log(Array.isArray([]))
+console.log(Array.isArray("[]"))
+console.log(Array.isArray[1, true])
+
+คำอธิบาย เป็นตัวอย่างการ check type array ตัวอย่างแรกคือ console.log(Array.isArray([])) เป็นการ check ว่า [] เป็น array จริงหรือไม่ ซึ่งได้ผลลัพธ์เป็น true
+เนื่องจากเป็น empty array ตัวอย่างที่ 2 คือ console.log(Array.isArray("[]")) เป็นการตรวจสอบว่า "[]" เป็น array หรือไม่ ซึ่งได้ผลลัพธ์เป็น false เนื่องจาก 
+"[]" มีเครื่องหมาย "" เป็น string ตัวอย่างสุดท้าย console.log(Array.isArray[1, true]) เป็นการตรวจสอบว่า [1, true] เป็น array หรือไม่ ซึ่งผลลัพธ์ที่ได้คือ 
+true เป็น array ปรกติทั่วไป 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+const array1 = ["a", "b", "c"]
+const array2 = ["d", "e", "f"]
+const array3 = array1.concat(array2)
+console.log(array3)
+console.log(array3.toString())
+
+คำอธิบาย ตัวอย่างนี้เป็นตัวอย่างของ method .concat ซึ่งเป็นการนำ array1 และ array2 มาเชื่อมต่อกัน เมื่อสั่ง const array3 = array1.concat(array2) 
+เป็นการนำ ["a", "b", "c"] และ ["d", "e", "f"] มาเชื่อมต่อกัน ซึ่งเมื่อ console.log(array3) ออกมา จะได้ผลลัพธ์เป็น ["a", "b", "c", "d", "e", "f"]
+ต่อมาสั่ง console.log(array3.toString()) เพื่อเปลี่ยน array ให้เป็น string จะได้ผลลัพธ์เป็น "a, b, c, d, e, f"
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+const nums = [15, 2, 33]
+nums.reverse()
+console.log(nums)
+
+คำอธิบาย Code นี้เป็นตัวอย่างของการ reverse คือการสลับลำดับ ซึ่งสิ่งที่ควรระวังคือ .reverse จะแก้ไขที่ array ต้นฉบับโดยตรง จากตัวอย่างนี้กำหนด nums = [15, 2, 33]
+เมื่อเขียนคำสั่ง nums.reverse() แล้ว console.log(nums) ออกมา จะเห็นผลลัพธ์เป็น [33, 2, 15] 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+const array4 = [1, 30, 4, 21, 100000]
+array4.sort((a, b) => a - b)
+console.log(array4)
+
+คำอธิบาย code นี้เป็นตัวอย่างการใช้ .sort ซึ่งปรกติ .sort จะเรียงตามตัวอักษร แต่โจทย์นี้ต้องการให้เรียงตามค่าจากน้อยไปมาก จึงเขียนคำสั่ง array4.sort((a, b) => a - b)
+ซึ่งอธิบายได้ว่า (a, b) => a - b คือ function ที่สร้างมาเพื่อเปรียบเทียบตัวเลข sort() ซึ่งถ้า a - b < 0 หรือค่าเป็นลบ a จะถูกเรียงอยู่ก่อน b แต่ถ้า a - b > 0 หรือ
+มีค่าเป็นบวก b จะถูกเรียงอยู่ก่อน a สุดท้ายถ้า a - b = 0  จะไม่มีการเปลี่ยนลำดับ ดังนั้น array จะถูก เรียงจากค่าน้อยไปมาก เมื่อ console.log(array4) จึงได้ผลลัพธ์ออกมาเป็น
+[1, 4, 21, 30, 100000]
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+const stds = [
+  { id: 1, name: "Tisanai", email: "tisanai@sit.kmutt.ac.th" },
+  { id: 5, name: "Pornchai", email: "pornchai@sit.kmutt.ac.th" },
+  { id: 2, name: "Suda", email: "suda@sit.kmutt.ac.th" },
+]
+
+stds.sort((a, b) => a.name.localeCompare(b.name));
+console.log(stds)
+
+คำอธิบาย โจทย์ต้องการให้เรียงลำดับจาก name โดยเรียงตาม a-z และสนใจ case sensitive ซึ่งในตัวอย่างได้ใช้คำสั่ง stds.sort((a, b) => a.name.localeCompare(b.name));
+อธิบายได้ว่า ใช้ sort() เพื่อเรียง array ของ object ส่วน .localeCompare() เป็น method ของ string ซึ่งเปรียบเทียบตัวอักษรตามลำดับตัวอักษร (a - z) คืนค่า < 0 
+ถ้า a.name น้อยกว่า b.name คืนค่า > 0 ถ้า a.name มากกว่า b.name และคืนค่า 0 ถ้าทั้ง 2 มีค่าเท่ากัน ดังนั้น array จะถูก เรียงตามชื่อ จาก a - z
+และเมื่อ console.log(stds) ออกมาจะได้ผลลัพธ์เป็น 
+[
+  { id: 5, name: "Pornchai", email: "pornchai@sit.kmutt.ac.th" },
+  { id: 1, name: "Tisanai", email: "tisanai@sit.kmutt.ac.th" },
+  { id: 2, name: "Suda", email: "suda@sit.kmutt.ac.th" }
+]
+
+stds.sort((a, b) => {
+  if (a.name < b.name) return -1;
+  if (a.name > b.name) return 1;
+  return 0;
+});
+console.log(stds)
+
+คำอธิบาย ตัวอย่างนี้คือ code อีกแบบที่แก้ไขโจทย์เดียวกัน ซึ่งมีการเขียนให้เห็น logic โดยตรง ไม่ใช้ method .localeCompare() ซึ่งเปรียบเทียบตัวอักษรตามลำดับตัวอักษร (a - z) 
+คืนค่า -1 ถ้า a.name น้อยกว่า b.name คืนค่า 1 ถ้า a.name มากกว่า b.name และคืนค่า 0 ถ้าทั้ง 2 มีค่าเท่ากัน ดังนั้น array จะถูก เรียงตามชื่อ จาก a - z และเมื่อ 
+console.log(stds) ออกมาจะได้ผลลัพธ์เหมือนกันคือ 
+[
+  { id: 5, name: "Pornchai", email: "pornchai@sit.kmutt.ac.th" },
+  { id: 1, name: "Tisanai", email: "tisanai@sit.kmutt.ac.th" },
+  { id: 2, name: "Suda", email: "suda@sit.kmutt.ac.th" }
+]
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+ต่อมาเป็นเรื่องของ JS Module ซึ่ง Module คือไฟล์ JS ที่สามารถ ส่งออก (export) โค้ด เช่น ฟังก์ชัน, ตัวแปร, หรือคลาส ไปใช้ในไฟล์อื่น และสามารถ นำเข้า (import) 
+มาใช้ได้ มีจุดประสงค์หลักเพื่อแบ่งโค้ดเป็นชิ้น ๆ ทำให้จัดการง่าย ลดความซ้ำซ้อนและความสับสนของชื่อ ช่วยให้โค้ด maintain ได้ง่าย
+
+การเชื่อมระหว่างไฟล์ utility.js และ ไฟล์ commonJSTest.js  
+
+function echo(value){
+    return value
+}
+const getLength = (str) => str.length
+const MAXStudent = 60
+//default export
+module.exports = { echo, getLength, MAXStudent } // { echo:echo, getLength:getLength, MAXStudent:MAXStudent }
+
+คำอธิบาย ไฟล์ utility.js นี้ ใช้ module.exports ส่งออก object ซึ่งไฟล์นี้จะส่งออก function echo, function getLength และ MAXStudent ซึ่งถูกส่งออกแบบ 
+named export  
+
+const { echo, getLength, MAXStudent } = require("./utility.js")
+console.log(echo("do something..."))
+console.log(getLength("Thunwawee"))
+console.log(MAXStudent)
+
+คำอธิบาย ไฟล์ commonJSTest.js มีการเรียกใช้ code จากไฟล์ utility.js จากคำสั่ง const { echo, getLength, MAXStudent } = require("./utility.js")
+ซึ่งเมื่อ console.log(echo("do something...")) โปรแกรมจะเรียกใช้ function echo ในไฟล์ utility.js ซึ่งเขียนไว้ว่า function echo(value){ return value } 
+จึงได้ผลลัพธ์ออกมาเป็น do something... ต่อมา console.log(getLength("Thunwawee")) โปรแกรมจะเรียกใช้ function getLength ซึ่งถูกเขียนไว้ว่า 
+const getLength = (str) => str.length ซึ่งจะนับจำนวนตัวอักษรของ string จึงได้ผลลัพธ์ออกมาเป็น 9 สุดท้าย console.log(MAXStudent) จะเรียกแสดงค่า
+MAXStudent ในไฟล์ utility ซึ่งกำหนดไว้ว่า const MAXStudent = 60 จึงได้ผลลัพธ์ออกมาเป็น 60
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+การเชื่อมระหว่างไฟล์ utility.js และ ไฟล์ esModuleTest.js 
+
+function echo(value){
+    return value
+}
+export default function getLength(str){ //สามารถเปลี่ยนชื่อได้ 
+    return str.length
+}
+const TAX = 0.7
+let x = 1
+//export list
+//export { echo, getLength as default, TAX }
+
+class Book {
+    constructor(isbn, title){
+        this.isbn = isbn
+        this.title = title
+    }
+}
+export { Book, echo, getLength, TAX as VAT }
+
+คำอธิบาย ไฟล์ utility.js นี้ ใช้ module.exports ส่งออก object ซึ่งไฟล์นี้จะส่งออก function echo, function getLength, TAX ซึ่งถูกส่งออกแบบ 
+named export และ มีการส่งออก class Book ซึ่งเป็นตัวอย่างที่แสดงว่าสามารถส่งออก class ได้เช่นกัน 
+
+import strLength, {Book, echo as repeat, VAT } from "./utility.js"
+
+console.log(echo("No one perfect"))
+console.log(repeat("Thunwawee"))
+console.log(TAX)
+console.log(VAT)
+console.log(strLength("Frontend"))
+
+const b1 = new Book(1234, "JS Beginner")
+console.log(b1)
+ 
+คำอธิบาย ไฟล์ esModuleTest.js มีการเรียกใช้ code จากไฟล์ utility.js จากคำสั่ง import strLength, {Book, echo as repeat, VAT } from "./utility.js"
+ซึ่งเมื่อ console.log(echo("No one perfect")) โปรแกรมจะเรียกใช้ function echo ในไฟล์ utility.js ซึ่งเขียนไว้ว่า function echo(value){ return value } 
+จึงได้ผลลัพธ์ออกมาเป็น No one perfect ต่อมา console.log(repeat("Thunwawee")) เราสามารถใช้ repeat แทนได้ เนื่องจากเราตั้งให้ echo as repeat เป็นการใช้
+repeat แทน echo ได้ ต่อมา console.log(TAX) และ console.log(VAT) คืนค่าเดียวกันคือ 0.7 เดิมมีชื่อเป็น TAX แต่กำหนด TAX as VAT ในไฟล์ utility.js ซึ่ง
+เมื่อ console.log ออกมา ได้ผลลัพธ์เท่ากับ 0.7 สุดท้ายโปรแกรมจะเรียกใช้ function getLength ซึ่งถูกเขียนไว้ว่า export default function getLength(str)
+{ return str.length } โดยมีการเขียน export default คือสามารถเปลี่ยนชื่อได้เมื่อเรียกใช้ ซึ่ง function นี้ จะนับจำนวนตัวอักษรของ string และได้ผลลัพธ์ออกมาเป็น 8 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+น.ส.ธันวาวีร์  นิธิพรชัยวงศ์ 67130500131
